@@ -3,7 +3,9 @@ This App Is For Android And It Allows You To Connect To Your Ollama Server By Us
 
 Requires:
 An PC With (Windows, Linux, MacOS)
+
 Ollama
+
 An Wifi To Get A Model
 
 Screenshots:
