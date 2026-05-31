@@ -8,7 +8,7 @@ Ollama
 
 An Wifi To Get A Model
 
-Then After installing the model do "ollama serve"
+Then After installing the model do "ollama serve" now on tour phone put the ip of your local IP (IP of your PC) with :11434 at the end
 
 Screenshots:
 <img width="1344" height="2992" alt="Screenshot_20260420_161412" src="https://github.com/user-attachments/assets/5842f148-d424-4a80-aa93-5c6a9fc27baa" />
