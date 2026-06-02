@@ -6,7 +6,7 @@ An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb O
 
 Ollama
 
-An Wifi To Get A Model
+An Wifi To Get A Model I Reccomend Using llama3.2:1b 
 
 Then After installing the model do "ollama serve" now on tour phone put the ip of your local IP (IP of your PC) with :11434 at the end
 
