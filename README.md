@@ -18,8 +18,6 @@ Maded The UI More Better!
 
 Fixed Bugs
 
-APK Will Be Available Tommorow Check Screenshots To See What Did Change!
-
 What Will Arrive Next Update:
 
 1.Changing To Http:// To Https:// For Privacy
