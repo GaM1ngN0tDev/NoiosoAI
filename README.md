@@ -2,13 +2,15 @@
 This App Is For Android And It Allows You To Connect To Your Ollama Server By Using The Local IP (example. 10.1.1.1) (This Is An Beta There Are Still Some Issues) (I Used The Gemini For Android Studio! Remeber This!)
 
 Requires:
-An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb Of Memory And A Cpu With 4 Threads 
+An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb Of Memory And A Cpu With 4 Threads (may use gpu even for more faster speed)
 
 Ollama
 
-An Wifi To Get A Model I Reccomend Using llama3.2:1b 
+An Wifi To Get A Model (I Reccomend Using llama3.2:1b) To Do That Do This It's An Example ollama pull llama3.2:1b 
 
-Then After installing the model do "ollama serve" now on tour phone put the ip of your local IP (IP of your PC) with :11434 at the end
+Then After installing the model do "OLLAMA_HOST=0.0.0.0 ollama serve" now on your phone put the ip of your local IP (IP of your PC) with :11434 at the end and the model of the LLM that you will start using
+
+Now your ready to go start chating with your LLM Localy
 
 New Update:
 
