@@ -18,8 +18,15 @@ Maded The UI More Better!
 
 Fixed Bugs
 
-APK Will Be Available Tommorow Check Screenshots To See What Did Change! 
+APK Will Be Available Tommorow Check Screenshots To See What Did Change!
 
+What Will Arrive Next Update:
+
+1.Changing To Http:// To Https:// For Privacy
+
+2.Adding Support For Tablets
+
+3.Maybe Trying To Run An LLM Into The Phone To Not Always Need A Local Server
 
 Screenshots:
 
