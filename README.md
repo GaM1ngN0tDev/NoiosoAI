@@ -10,17 +10,16 @@ An Wifi To Get A Model I Reccomend Using llama3.2:1b
 
 Then After installing the model do "ollama serve" now on tour phone put the ip of your local IP (IP of your PC) with :11434 at the end
 
-New Updates In Coming:
+New Update:
 
-1.Trying To Add More Privacy Like Ollama Without Http:// But Using Https:// 
+Maded The UI More Better!
 
-2.Trying To Make The UI More Better And More Material 3 Expressive Stuff
+Fixed Bugs
 
-And Ecc:D
+APK Will Be Available Tommorow Check Screenshots To See What Did Change! 
 
 
 Screenshots:
 
-<img width="1344" height="2992" alt="Screenshot_20260420_161412" src="https://github.com/user-attachments/assets/5842f148-d424-4a80-aa93-5c6a9fc27baa" />
-<img width="1344" height="2992" alt="Screenshot_20260420_161635" src="https://github.com/user-attachments/assets/45876db9-6cfd-4917-8f5d-e0945152517d" />
-
+<img width="1080" height="2400" alt="Screenshot_20260606_163548" src="https://github.com/user-attachments/assets/68b1cfd8-bf84-4814-93ab-a04b3ba3f814" />
+<img width="1080" height="2400" alt="Screenshot_20260606_163629" src="https://github.com/user-attachments/assets/efe55026-7987-4cd6-bb6c-78dac0d9b369" />
