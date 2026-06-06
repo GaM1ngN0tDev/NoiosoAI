@@ -2,7 +2,7 @@
 This App Is For Android And It Allows You To Connect To Your Ollama Server By Using The Local IP (example. 10.1.1.1) (This Is An Beta There Are Still Some Issues) (I Used The Gemini For Android Studio! Remeber This!)
 
 Requires:
-An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb Of Memory And A Cpu With 4 Threads (may use gpu even for more faster speed)
+An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb Of Memory And A Cpu With 4 Or 2 Threads (may use gpu even for more faster speed)
 
 Ollama
 
