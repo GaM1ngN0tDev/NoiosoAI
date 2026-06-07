@@ -1,32 +1,36 @@
-# NoiosoAI
+# NoiosoAI 🌌
+
 This App Is For Android And It Allows You To Connect To Your Ollama Server By Using The Local IP (example. 10.1.1.1) (This Is An Beta There Are Still Some Issues) (I Used The Gemini For Android Studio! Remeber This!)
 
-Requires:
-An PC With (Windows, Linux, MacOS) 8gb Of Ram At Least 30gb Or Lower Like 20gb Of Memory And A Cpu With 4 Or 2 Threads (may use gpu even for more faster speed)
+## ✨ Features
+NoiosoAI is a modern, privacy-focused Android chat application designed to connect to your local **Ollama** server. It features a beautiful "Material Expressive 3" UI with a living, animated background and a premium dark mode aesthetic.
 
-Ollama
+### Requires:
+- A PC With (Windows, Linux, MacOS)
+- 8GB of RAM
+- At least 20-30GB of Storage
+- A CPU with 4 or 2 Threads (may use GPU even for faster speed)
+- [Ollama](https://ollama.com/)
 
-An Wifi To Get A Model (I Reccomend Using llama3.2:1b) To Do That Do This It's An Example ollama pull llama3.2:1b 
+### 🚀 Getting Started
+1. **Pull a Model**: I recommend using llama3.2:1b. Run: `ollama pull llama3.2:1b`
+2. **Start Server**: Run `OLLAMA_HOST=0.0.0.0 ollama serve`
+3. **Connect**: On your phone, put the local IP of your PC with `:11434` at the end and select the model name.
 
-Then After installing the model do "OLLAMA_HOST=0.0.0.0 ollama serve" now on your phone put the ip of your local IP (IP of your PC) with :11434 at the end and the model of the LLM that you will start using
+Now you're ready to start chatting with your LLM locally!
 
-Now your ready to go start chating with your LLM Localy
+## 🛠 Tech Stack
+- **UI**: Jetpack Compose
+- **Network**: Retrofit + OkHttp
+- **JSON**: Moshi
+- **Async**: Kotlin Coroutines & Flow
+- **Data**: Jetpack DataStore
 
-New Update:
+## 📸 Screenshots
+<p align="center">
+<img width="300" alt="Screenshot_1" src="https://github.com/user-attachments/assets/68b1cfd8-bf84-4814-93ab-a04b3ba3f814" />
+<img width="300" alt="Screenshot_2" src="https://github.com/user-attachments/assets/efe55026-7987-4cd6-bb6c-78dac0d9b369" />
+</p>
 
-Maded The UI More Better!
-
-Fixed Bugs
-
-What Will Arrive Next Update:
-
-1.Changing To Http:// To Https:// For Privacy
-
-2.Adding Support For Tablets
-
-3.Maybe Trying To Run An LLM Into The Phone To Not Always Need A Local Server
-
-Screenshots:
-
-<img width="1080" height="2400" alt="Screenshot_20260606_163548" src="https://github.com/user-attachments/assets/68b1cfd8-bf84-4814-93ab-a04b3ba3f814" />
-<img width="1080" height="2400" alt="Screenshot_20260606_163629" src="https://github.com/user-attachments/assets/efe55026-7987-4cd6-bb6c-78dac0d9b369" />
+## 📄 License
+Distributed under the MIT License. See `LICENSE` for more information.
