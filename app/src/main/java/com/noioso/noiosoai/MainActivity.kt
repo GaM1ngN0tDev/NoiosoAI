@@ -51,6 +51,7 @@ class MainActivity : ComponentActivity() {
                     composable("settings") {
                         SettingsScreen(
                             settingsManager = settingsManager,
+                            chatRepository = repository,
                             onBackClick = { navController.popBackStack() }
                         )
                     }

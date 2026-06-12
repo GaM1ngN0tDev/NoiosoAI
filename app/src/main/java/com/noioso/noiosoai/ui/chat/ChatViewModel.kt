@@ -19,7 +19,8 @@ data class ChatUiState(
     val messages: List<Message> = emptyList(),
     val isGenerating: Boolean = false,
     val error: String? = null,
-    val model: String = "llama3" // Default model, can be made configurable later
+    val model: String = "llama3",
+    val systemPrompt: String = ""
 )
 
 class ChatViewModel(
@@ -38,6 +39,11 @@ class ChatViewModel(
                 _uiState.update { it.copy(model = model) }
             }
         }
+        viewModelScope.launch {
+            settingsManager.systemPrompt.collect { prompt ->
+                _uiState.update { it.copy(systemPrompt = prompt) }
+            }
+        }
     }
 
     fun sendMessage(content: String) {
@@ -52,7 +58,14 @@ class ChatViewModel(
             val assistantMessagePlaceholder = Message(role = "assistant", content = "")
             _uiState.update { it.copy(messages = it.messages + assistantMessagePlaceholder) }
 
-            repository.chatStream(_uiState.value.model, currentMessages)
+            // Include system prompt at the beginning of the conversation
+            val messagesWithSystem = if (_uiState.value.systemPrompt.isNotBlank()) {
+                listOf(Message(role = "system", content = _uiState.value.systemPrompt)) + currentMessages
+            } else {
+                currentMessages
+            }
+
+            repository.chatStream(_uiState.value.model, messagesWithSystem)
                 .onStart { /* Handle start if needed */ }
                 .onCompletion { _uiState.update { it.copy(isGenerating = false) } }
                 .catch { e ->

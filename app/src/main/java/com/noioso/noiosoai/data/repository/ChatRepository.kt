@@ -137,4 +137,15 @@ class ChatRepository(private val settingsManager: SettingsManager) {
             throw IOException("Communication failure: ${response.code()}")
         }
     }
+
+    suspend fun getModels(): List<String> {
+        return try {
+            val api = getApi()
+            val response = api.getModels()
+            response.models.map { it.name }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to fetch models", e)
+            emptyList()
+        }
+    }
 }

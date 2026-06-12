@@ -15,7 +15,21 @@ interface OllamaApi {
 
     @POST("api/chat")
     suspend fun chatNonStreaming(@Body request: ChatRequest): retrofit2.Response<ChatResponse>
+
+    @retrofit2.http.GET("api/tags")
+    suspend fun getModels(): ModelsResponse
 }
+
+@JsonClass(generateAdapter = true)
+data class ModelsResponse(
+    val models: List<OllamaModel>
+)
+
+@JsonClass(generateAdapter = true)
+data class OllamaModel(
+    val name: String,
+    val model: String
+)
 
 @JsonClass(generateAdapter = true)
 data class ChatRequest(

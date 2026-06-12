@@ -17,6 +17,9 @@ NoiosoAI is a modern, privacy-focused Android chat application designed to conne
 2. **Start Server**: Run `OLLAMA_HOST=0.0.0.0 ollama serve`
 3. **Connect**: On your phone, put the local IP of your PC with `:11434` at the end and select the model name.
 
+> [!TIP]
+> **Remote Access**: If you want to use NoiosoAI from cellular data or outside your home, use **Tailscale** instead of port-forwarding. It's much more secure and provides a static IP for your PC.
+
 Now you're ready to start chatting with your LLM locally!
 
 ## 🛠 Tech Stack

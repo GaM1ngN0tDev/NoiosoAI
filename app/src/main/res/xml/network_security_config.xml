@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+    <!--
+      Allow cleartext for local Ollama instances.
+      Note: Android does not support CIDR ranges (like 192.168.0.0/16) in XML.
+      The base-config allows the user to connect to any local IP they provide.
+    -->
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
             <certificates src="system" />
         </trust-anchors>
     </base-config>
+
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain> <!-- Emulator Loopback -->
+    </domain-config>
 </network-security-config>

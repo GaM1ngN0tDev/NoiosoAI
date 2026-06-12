@@ -2,19 +2,40 @@ package com.noioso.noiosoai.ui.settings
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Psychology
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.Storage
+import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -22,20 +43,35 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.noioso.noiosoai.data.local.SettingsManager
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
     settingsManager: SettingsManager,
+    chatRepository: com.noioso.noiosoai.data.repository.ChatRepository,
     onBackClick: () -> Unit
 ) {
     val ollamaIp by settingsManager.ollamaIp.collectAsStateWithLifecycle(initialValue = "")
     val ollamaModel by settingsManager.ollamaModel.collectAsStateWithLifecycle(initialValue = "")
+    val systemPrompt by settingsManager.systemPrompt.collectAsStateWithLifecycle(initialValue = "")
     
     var ipInput by remember(ollamaIp) { mutableStateOf(ollamaIp) }
     var modelInput by remember(ollamaModel) { mutableStateOf(ollamaModel) }
+    var systemPromptInput by remember(systemPrompt) { mutableStateOf(systemPrompt) }
     
+    var availableModels by remember { mutableStateOf<List<String>>(emptyList()) }
+    var isFetchingModels by remember { mutableStateOf(false) }
+
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+
+    // Fetch models on start
+    LaunchedEffect(ollamaIp) {
+        if (ollamaIp.isNotBlank()) {
+            isFetchingModels = true
+            availableModels = chatRepository.getModels()
+            isFetchingModels = false
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -132,6 +168,109 @@ fun SettingsScreen(
                     enabled = modelInput.isNotBlank() && modelInput != ollamaModel,
                     modifier = Modifier.align(Alignment.End)
                 )
+
+                if (availableModels.isNotEmpty()) {
+                    Text(
+                        "Available Models on Server:",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        availableModels.forEach { model ->
+                            FilterChip(
+                                selected = modelInput == model,
+                                onClick = { modelInput = model },
+                                label = { Text(model) }
+                            )
+                        }
+                    }
+                } else if (isFetchingModels) {
+                    CircularProgressIndicator(modifier = Modifier.size(24.dp))
+                } else {
+                    TextButton(
+                        onClick = {
+                            scope.launch {
+                                isFetchingModels = true
+                                availableModels = chatRepository.getModels()
+                                isFetchingModels = false
+                            }
+                        },
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ) {
+                        Icon(Icons.Rounded.Refresh, contentDescription = null)
+                        Spacer(Modifier.width(8.dp))
+                        Text("Refresh Model List")
+                    }
+                }
+            }
+
+            // Personality Configuration Section
+            SettingsSection(
+                title = "Personality", 
+                icon = Icons.Rounded.Tune,
+                delayIndex = 2
+            ) {
+                OutlinedTextField(
+                    value = systemPromptInput,
+                    onValueChange = { systemPromptInput = it },
+                    label = { Text("System Prompt") },
+                    placeholder = { Text("How should the AI behave?") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.large,
+                    minLines = 3,
+                    supportingText = {
+                        Text("This defines the AI's persona and rules.")
+                    }
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                AnimatedButton(
+                    onClick = {
+                        scope.launch {
+                            settingsManager.saveSystemPrompt(systemPromptInput)
+                        }
+                    },
+                    text = "Save Prompt",
+                    enabled = systemPromptInput != systemPrompt,
+                    modifier = Modifier.align(Alignment.End)
+                )
+            }
+
+            // About Section
+            val uriHandler = LocalUriHandler.current
+            SettingsSection(
+                title = "About", 
+                icon = Icons.Rounded.Info,
+                delayIndex = 3
+            ) {
+                Text(
+                    "NoiosoAI is an open-source project designed to make local AI accessible on Android.",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                
+                Text(
+                    "Made by GaM1ngN0tDev",
+                    style = MaterialTheme.typography.labelLarge.copy(
+                        fontWeight = FontWeight.Bold
+                    ),
+                    color = MaterialTheme.colorScheme.primary
+                )
+                
+                Spacer(modifier = Modifier.height(8.dp))
+
+                OutlinedButton(
+                    onClick = { uriHandler.openUri("https://github.com/GaM1ngN0tDev/NoiosoAI") },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = MaterialTheme.shapes.large
+                ) {
+                    Text("View on GitHub")
+                }
             }
         }
     }
