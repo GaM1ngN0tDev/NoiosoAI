@@ -1,42 +1,111 @@
-# NoiosoAI 🌌
+NoiosoAI 🌌
 
-This App Is For Android And It Allows You To Connect To Your Ollama Server By Using The Local IP (example. 10.1.1.1) (This Is An Beta There Are Still Some Issues) (I Used The Gemini For Android Studio! Remeber This!)
+A privacy-focused Android AI chat app for your local Ollama server.
 
-## Update In Coming!
-> I'm Finally Going To Update NoiosoAI With More Stuff Added:D (It's Work In Progress!) (Version 2.0.0)
+NoiosoAI lets you connect your Android phone to your own Ollama server and chat with locally hosted language models.
 
-## Features
-NoiosoAI is a modern, privacy-focused Android chat application designed to connect to your local **Ollama** server. It features a beautiful "Material Expressive 3" UI with a living, animated background and a premium dark mode aesthetic.
+Status: Beta — The app is still in development, so some bugs and issues may occur.
+Version 2.0.0 — Coming Soon
 
-### Requires:
-- A PC With (Windows, Linux, MacOS)
-- 8GB of RAM
-- At least 20-30GB of Storage
-- A CPU with 4 or 2 Threads (may use GPU even for faster speed)
-- [Ollama](https://ollama.com/)
+I'm working on a new update with more features and improvements. Version 2.0.0 is currently a work in progress.
 
-### Getting Started
-1. **Pull a Model**: I recommend using llama3.2:1b. Run: `ollama pull llama3.2:1b`
-2. **Start Server**: Run `OLLAMA_HOST=0.0.0.0 ollama serve`
-3. **Connect**: On your phone, put the local IP of your PC with `:11434` at the end and select the model name.
+Features
+Local AI chat using Ollama.
+Privacy-focused connection to your own server.
+Modern Material Expressive-inspired UI built with Jetpack Compose.
+Animated backgrounds and a dark aesthetic.
+Connect to your PC using its local IP address.
+Select from available Ollama models.
+Requirements
+An Android device with NoiosoAI installed.
+A PC running Windows, Linux, or macOS.
+At least 8 GB of RAM recommended.
+Around 20–30 GB of free storage recommended.
+A CPU with 2–4 threads or more; a compatible GPU can improve performance.
+Ollama.
 
-> [!TIP]
-> **Remote Access**: If you want to use NoiosoAI from cellular data or outside your home, use **Tailscale** instead of port-forwarding. It's much more secure and provides a static IP for your PC.
+Actual performance depends on your hardware and the model you choose.
 
-Now you're ready to start chatting with your LLM locally!
+Getting Started
+1. Install Ollama
 
-## Tech Stack
-- **UI**: Jetpack Compose
-- **Network**: Retrofit + OkHttp
-- **JSON**: Moshi
-- **Async**: Kotlin Coroutines & Flow
-- **Data**: Jetpack DataStore
+Download Ollama from ollama.com.
 
-## Screenshots
+2. Download a model
+
+Run the following command:
+
+bash
+ollama pull llama3.2:1b
+
+3. Start the server
+
+Linux / macOS:
+
+bash
+OLLAMA_HOST=0.0.0.0:11434 ollama serve
+
+
+Windows PowerShell:
+
+powershell
+$env:OLLAMA_HOST="0.0.0.0:11434"
+ollama serve
+
+4. Connect your phone
+
+Make sure your PC and Android phone are connected to the same network. Find your PC's local IP address, then enter it in NoiosoAI with port 11434.
+
+Example:
+
+text
+http://10.1.1.1:11434
+
+
+Select your downloaded model, such as llama3.2:1b, and start chatting.
+
+Security: Only allow trusted devices to access your Ollama server. Avoid exposing port 11434 directly to the public internet.
+Remote Access
+
+To use NoiosoAI outside your home network, I recommend Tailscale instead of router port forwarding.
+
+Install Tailscale on both devices and use your PC's Tailscale IP address with port 11434. Keep access restricted to trusted devices.
+
+Tech Stack
+Language: Kotlin
+UI: Jetpack Compose
+Networking: Retrofit and OkHttp
+JSON: Moshi
+Asynchronous Operations: Kotlin Coroutines and Flow
+Storage: Jetpack DataStore
+Screenshots
+
 <p align="center">
-<img width="300" alt="Screenshot_1" src="https://github.com/user-attachments/assets/68b1cfd8-bf84-4814-93ab-a04b3ba3f814" />
-<img width="300" alt="Screenshot_2" src="https://github.com/user-attachments/assets/efe55026-7987-4cd6-bb6c-78dac0d9b369" />
+<img width="280" alt="NoiosoAI Screenshot 1" src="https://github.com/user-attachments/assets/68b1cfd8-bf84-4814-93ab-a04b3ba3f814" />
+<img width="280" alt="NoiosoAI Screenshot 2" src="https://github.com/user-attachments/assets/efe55026-7987-4cd6-bb6c-78dac0d9b369" />
 </p>
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
+AI-Assisted Development
+
+NoiosoAI was developed with assistance from Gemini in Android Studio.
+
+Roadmap
+Connect to a local Ollama server.
+Build the Android chat interface.
+Add model selection.
+Improve stability and fix bugs.
+Develop Version 2.0.0.
+Introduce more features and improvements.
+Bug Reports
+
+If you encounter an issue, check that Ollama is running, your server address is correct, and your firewall allows the connection.
+
+If the problem persists, open an issue on GitHub.
+
+Feedback and suggestions are welcome.
+
+License
+
+Distributed under the MIT License. See LICENSE for details.
+
+Thanks for checking out NoiosoAI and supporting the project!
