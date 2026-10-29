@@ -4,9 +4,9 @@
 
 NoiosoAI lets you connect your Android phone to your own Ollama server and chat with locally hosted language models.
 
-> **Status: Beta** — The app is still in development, so bugs and issues may occur.
+> **Status: Beta**  The app is still in development, so bugs and issues may occur.
 
-## Version 2.0.0 — Coming Soon
+## Version 2.0.0 Coming Soon
 
 I'm working on a new update with more features and improvements! Version 2.0.0 is currently a work in progress.
 
