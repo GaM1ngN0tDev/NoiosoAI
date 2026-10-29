@@ -99,7 +99,7 @@ Install Tailscale on both devices and use your PC's Tailscale IP address with po
 
 ## AI-Assisted Development
 
-NoiosoAI was developed with assistance from **Gemini in Android Studio**.
+NoiosoAI was developed with assistance from **Gemini in Android Studio** and even from **Antigravity By Google**.
 
 ## Roadmap
 
