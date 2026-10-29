@@ -2,6 +2,9 @@
 
 This App Is For Android And It Allows You To Connect To Your Ollama Server By Using The Local IP (example. 10.1.1.1) (This Is An Beta There Are Still Some Issues) (I Used The Gemini For Android Studio! Remeber This!)
 
+## Update In Coming!
+> I'm Finally Going To Update NoiosoAI With More Stuff Added:D (It's Work In Progress!) (Version 2.0.0)
+
 ## Features
 NoiosoAI is a modern, privacy-focused Android chat application designed to connect to your local **Ollama** server. It features a beautiful "Material Expressive 3" UI with a living, animated background and a premium dark mode aesthetic.
 
