@@ -109,3 +109,8 @@ License
 Distributed under the MIT License. See LICENSE for details.
 
 Thanks for checking out NoiosoAI and supporting the project!
+License
+
+Distributed under the MIT License. See LICENSE for details.
+
+Thanks for checking out NoiosoAI and supporting the project!
